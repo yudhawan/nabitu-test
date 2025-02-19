@@ -1,0 +1,14 @@
+.main{
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    color: #212b36;
+}
+.datepickerError{
+    div{
+        border: 1px solid #d32f2f;
+        div{
+            border: unset;
+        }
+    }
+}

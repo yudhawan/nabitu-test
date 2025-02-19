@@ -1,0 +1,84 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #f1f5f9;
+  --foreground: #171717;
+}
+.normal-xs{
+  font-size: 12px;
+  font-weight: 400;
+}
+.normal-sm{
+  font-size: 14px;
+  font-weight: 400;
+}
+.normal-base{
+  font-size: 16px;
+  font-weight: 400;
+}
+.medium-xs{
+  font-size: 12px;
+  font-weight: 500;
+}
+.medium-sm{
+  font-size: 14px;
+  font-weight: 500;
+}
+.medium-base{
+  font-size: 16px;
+  font-weight: 500;
+}
+.semi-xs{
+  font-size: 12px;
+  font-weight: 600;
+}
+.semi-sm{
+  font-size: 14px;
+  font-weight: 600;
+}
+.semi-base{
+  font-size: 16px;
+  font-weight: 600;
+}
+.bold-xs{
+  font-size: 12px;
+  font-weight: 700;
+}
+.bold-sm{
+  font-size: 14px;
+  font-weight: 700;
+}
+.bold-base{
+  font-size: 16px;
+  font-weight: 700;
+}
+.icon-white {
+  path {
+    stroke: #F4F4F4;
+  }
+}
+.icon-gray {
+  path {
+    stroke: #9D9D9D;
+  }
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #f1f5f9;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}

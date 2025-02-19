@@ -1,9 +1,8 @@
 import React from 'react'
+import ListInvoice from './ListInvoice'
 
 function ListInvoicePage() {
-  return (
-    <div>ListInvoicePage</div>
-  )
+  return <ListInvoice/>
 }
 
 export default ListInvoicePage

@@ -12,6 +12,7 @@ interface InvoiceInterface {
     title:string
     desc:string
   }
+  resetStatus:()=>void
   addInvoice: (val: Omit<InvoiceType,'ID'>,isEdit?:boolean) => void
 }
 
@@ -20,6 +21,8 @@ export const InvoiceStore = create<InvoiceInterface>()(persist(
     invoices: [],
     status:'',
     text:{title:'',desc:''},
+    resetStatus:()=>set({status:'',
+      text:{title:'',desc:''}}),
     addInvoice: (value,isEdit=false) => {
         let tmp = get().invoices
         if(tmp.some(a=>a.Number===value.Number)&&!isEdit) {

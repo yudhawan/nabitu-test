@@ -21,9 +21,9 @@ function AddInvoiceContainer() {
       Number:'',
       Amount:''
     },
-    resolver:zodResolver(AddInvoiceSchema)
+    // resolver:zodResolver(AddInvoiceSchema)
   })
-  const {addInvoice,status} = InvoiceStore()
+  const {addInvoice,status,text,resetStatus} = InvoiceStore()
   const {control}=form_provider
   const formValues = useWatch({ control })
   const [validation,setValidation]=useState<ValidationType[]>([])
@@ -38,19 +38,20 @@ function AddInvoiceContainer() {
       Status:data.Status
     })
   }
-
+  useEffect(()=>{
+    if(status) resetStatus()
+  },[])
   useEffect(() => {
     const updatedValidation = validation.filter(v => formValues[v.key as keyof typeof formValues]==='') 
     if (updatedValidation.length !== validation.length) {
       setValidation(updatedValidation)
     }
   }, [formValues, validation])
-  
   return (
     <div className={style.main}>
       <FormProvider {...form_provider}>
         <ContainerLabel label='Invoice'>
-          <form onSubmit={form_provider.handleSubmit(onSubmit)} className='flex flex-col justify-between py-[26px] px-[37px]'>
+          <form onSubmit={form_provider.handleSubmit(onSubmit)} className='flex flex-col justify-between'>
             <div className='flex gap-[35px]'>
               <div className='w-[538px] flex flex-col gap-[18px]'>
                 <InputComponent required error={validation.some(a=>a.key==='Name')} name={"Name"} placeholder='Enter your invoice name' />
@@ -67,7 +68,7 @@ function AddInvoiceContainer() {
         </ContainerLabel>
       </FormProvider>
       {
-        status&&<ToastComponent status={status} title={''}  />
+        status&&<ToastComponent status={status} {...text}  />
       }
     </div>
   )

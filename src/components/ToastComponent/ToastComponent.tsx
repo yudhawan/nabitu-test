@@ -8,13 +8,14 @@ interface ToastComponentType{
     desc?:string
 }
 function ToastComponent(prop:ToastComponentType) {
+    console.log(style[prop.status])
   return (
     <div className={`${style.main} ${style[prop.status]}`}>
         {
-            prop.status==='success'&&<CheckBoxIcon />
+            prop.status==='success'&&<CheckBoxIcon sx={{color:'#34D399'}} />
         }
         {
-            prop.status==='error'&&<ErrorIcon/>
+            prop.status==='error'&&<ErrorIcon sx={{color:'#b91c1c'}}/>
         }
         <div className='flex flex-col gap-2'>
             <span className={`bold-base ${prop.status==='success'?'text-[#004434]':'text-red-700'}`}>{prop.title}</span>

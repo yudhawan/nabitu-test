@@ -45,11 +45,11 @@ function InputComponent({
   prefix,
   currencySymbol = 'Rp'
 }: InputComponentType) {
-  const { control, setValue } = useFormContext()
+  const { control, setValue,getValues } = useFormContext()
   const fieldValue = useWatch({ control, name }) || ''
 
   useEffect(() => {
-    if (prefix && !fieldValue.startsWith(prefix)) {
+    if (prefix && !fieldValue.startsWith(prefix)&&getValues(name)) {
       setValue(name, `${prefix}${fieldValue.replace(prefix, '')}`, { shouldValidate: true })
     }
   }, [fieldValue, prefix, setValue, name])
@@ -123,8 +123,9 @@ function InputComponent({
         <Controller
           name={name}
           control={control}
+          defaultValue={'default'}
           render={({ field }) => (
-            <TextField {...field} select fullWidth defaultValue="default" error={error}>
+            <TextField {...field} select fullWidth error={error}>
               {placeholder && (
                 <MenuItem value="default" disabled>
                   {placeholder}

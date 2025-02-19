@@ -6,3 +6,9 @@
     border-radius: 2px;
     align-self: center;
 }
+.container{
+    padding-block: 26px;
+    padding-inline: 37px;
+    display: flex;
+    flex-direction: column;
+}
